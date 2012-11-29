@@ -1,3 +1,6 @@
+
+tripod1_
+
 base_neck_w = 35.5;
 base_neck_h = 6.0;
 base_h = 2.0;
@@ -29,20 +32,10 @@ module block() {
 		cube([w, w, accepter_floor_thickness+base_h+base_neck_h]);
 }
 
-module b2() {
-translate([0,1.65,-0.01])
-scale([0.9,0.93,0.728])
-minkowski() {
-	block();
-	rotate([45,45,0])
-		cube([3,3,3]);
-}
-}
-
 
 module accepter() {
 	difference() {
-		b2(); // replace with 'block();' for square
+		block();
 		translate([0, -base_w/4, 0])
 			base_plate();
 		translate([0, +base_w/4, 0])
@@ -60,32 +53,5 @@ module accepter() {
 	}
 }
 
-//accepter();
+accepter();
 
-module hextube(base=5, mid=7, height=5, depth=10) {
-	hull() {
-		translate([0, -height/2, 0])
-			cube([base, depth, 0.001]);
-		translate([0, 0, 0])
-			cube([mid, depth, 0.001]);
-		translate([0, height/2, 0])
-			cube([base, depth, 0.001]);
-	}
-}
-
-alu_w = 40.5;
-slot_w = 5.8;
-slot_c = 10.0;
-
-module tripodmount() {
-	translate([base_w/2, (base_w-base_neck_w)/2, base_h+base_neck_h]) {
-		translate([-slot_c-slot_w/2, 0, 0])
-			cube([slot_w, base_neck_w, 2]);
-
-		translate([slot_c-slot_w/2, 0, 0])
-			cube([slot_w, base_neck_w, 2]);
-	}
-	base_plate();
-}
-
-tripodmount();
