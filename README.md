@@ -45,15 +45,15 @@ Parts 3D Printed
 <table>
   <tr>
     <td>End Caps (2)</td>
-    <td>![End Cap](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/endcap.jpg)</td>
+    <td><img src="https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/endcap.jpg" alt="Endcap" />
   </tr>
   <tr>
     <td>Universal Tripod Mounts for Makerslide (2)</td>
-    <td>![Tripod Mount](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_universal.jpg)</td>
+    <td><img src="https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_universal.jpg" alt="Universal Tripod Mount"/></td>
   </tr>
   <tr>
     <td>Washer for Universal Tripod Mounts (2)</td>
-    <td>![Tripod Mount Washer](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_washer.jpg)</td>
+    <td><img src="https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_washer.jpg" alt="Washer for Tripod Mount" /></td>
   </tr>
 </table>
 
