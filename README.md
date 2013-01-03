@@ -42,12 +42,20 @@ Parts from Inventables [1]
 
 Parts 3D Printed
 ----------------
-* End Caps (2)
-  ![End Cap](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/endcap.jpg)
-* Universal Tripod Mounts for Makerslide (2)
-  ![Tripod Mount](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_universal.jpg)
-* Washer for Universal Tripod Mounts (2)
-  ![Tripod Mount Washer](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_washer.jpg)
+<table>
+  <tr>
+    <td>End Caps (2)</td>
+    <td>![End Cap](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/endcap.jpg)</td>
+  </tr>
+  <tr>
+    <td>Universal Tripod Mounts for Makerslide (2)</td>
+    <td>![Tripod Mount](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_universal.jpg)</td>
+  </tr>
+  <tr>
+    <td>Washer for Universal Tripod Mounts (2)</td>
+    <td>![Tripod Mount Washer](https://raw.github.com/canadaduane/MakerSlider/manual-slider/images/tripod_mount_washer.jpg)</td>
+  </tr>
+</table>
 
 Misc Parts
 ----------
