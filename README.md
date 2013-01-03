@@ -5,10 +5,10 @@ This is a 1-meter long, open hardware camera slider based on the makerslide [1]
 linear axis design. You can build it for less than $75, and probably cheaper if
 you find a supply store that will sell you nuts and bolts in small quantities
 
-* Blog: http://makerslider.com/
-* Video Gallery: http://www.youtube.com/channel/UC_zFTyue-WDg8t578pJoELQ
-* Photo Gallery: https://www.dropbox.com/sh/xkcuepbbvvtgqjz/wIo5Ne0xbe
-* Discussion Group: https://groups.google.com/d/forum/maker-slider
+* __Blog__: http://makerslider.com/
+* __Video Gallery__: http://www.youtube.com/channel/UC_zFTyue-WDg8t578pJoELQ
+* __Photo Gallery__: https://www.dropbox.com/sh/xkcuepbbvvtgqjz/wIo5Ne0xbe
+* __Discussion Group__: https://groups.google.com/d/forum/maker-slider
 
 Parts List
 ==========
@@ -25,19 +25,19 @@ Parts from Inventables [1]
 * __Nylon Spacers__ (4) - $2.00 for 10 <br/>
   (Optional) You can use washers instead of nylon spacers. The Standard
   Wheel Carriage Plate just needs to ride above the Makerslide track.
-* __Eccentric Spacer__ (2) - $4.00
-  > (Optional) If you're ok with a too-snug or too-loose carriage,
-  > the spacers are optional.
-* __Precision Shim Washers__ (4) - $2.00 for 10
-  > 4 total, 1 each for the Dual Bearing V-Wheels
-* __M5x30mm Button Head Cap Screws__ (4) - $2.50 for 10
-  > 4 total, 1 each for the Dual Bearing V-Wheels
-* __M5x10mm Button Head Cap Screws__ (10) - $2.50 for 10
-  > 2 for the End Caps
-  > 8 for the Universal Tripod Mounts
-* __M5 Flat Washers__ (2) - $2.50 for 10
-  > 2 for adjusting the height of the Standard Wheel Carriage Plate on
-  > the side opposite the Eccentric Spacers
+* __Eccentric Spacer__ (2) - $4.00 <br/>
+  (Optional) If you're ok with a too-snug or too-loose carriage,
+  the spacers are optional.
+* __Precision Shim Washers__ (4) - $2.00 for 10 <br/>
+  4 total, 1 each for the Dual Bearing V-Wheels
+* __M5x30mm Button Head Cap Screws__ (4) - $2.50 for 10 <br/>
+  4 total, 1 each for the Dual Bearing V-Wheels
+* __M5x10mm Button Head Cap Screws__ (10) - $2.50 for 10 <br/>
+  2 for the End Caps,
+  8 for the Universal Tripod Mounts
+* __M5 Flat Washers__ (2) - $2.50 for 10 <br/>
+  2 for adjusting the height of the Standard Wheel Carriage Plate on
+  the side opposite the Eccentric Spacers
 * __M5 Hex Nuts__ (4) - $2.00 for 10
 
 Parts 3D Printed
@@ -63,9 +63,9 @@ Misc Parts
 
 Optional Parts
 --------------
-* __Manfrotto Jr. Head__ (1) - $60
-  > This requires a 1/2" long 3/8" diameter bolt, and a drill press (to make
-    a wider hole on the Standard Wheel Carriage Plate).
+* __Manfrotto Jr. Head__ (1) - $60 <br/>
+  This requires a 1/2" long 3/8" diameter bolt, and a drill press (to make
+  a wider hole on the Standard Wheel Carriage Plate).
 
 Tools List
 ==========
