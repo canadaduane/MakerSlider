@@ -1,14 +1,14 @@
 Manual MakerSlider v.0.9
 ========================
 
-This is a 1-meter long, open hardware camera slider based on the makerslide [1]
+This is a 1-meter long, open hardware camera slider based on the [makerslide][ms]
 linear axis design. You can build it for less than $75, and probably cheaper if
 you find a supply store that will sell you nuts and bolts in small quantities
 
 * __Blog__: http://makerslider.com/
-* __Video Gallery__: http://www.youtube.com/channel/UC_zFTyue-WDg8t578pJoELQ
-* __Photo Gallery__: https://www.dropbox.com/sh/xkcuepbbvvtgqjz/wIo5Ne0xbe
 * __Discussion Group__: https://groups.google.com/d/forum/maker-slider
+* [__Video Gallery__](http://www.youtube.com/channel/UC_zFTyue-WDg8t578pJoELQ)
+* [__Photo Gallery__](https://www.dropbox.com/sh/xkcuepbbvvtgqjz/wIo5Ne0xbe)
 
 Parts List
 ==========
@@ -79,7 +79,7 @@ License
 =======
 
 MakerSlider is (C) 2012-2013 Duane Johnson and released under the "CC BY 2.0"
-license (Creative Commons Attribution) [2].
+license ([Creative Commons Attribution][cc]).
 
-[1] Makerslide Parts: https://www.inventables.com/categories/innovative-materials/components/mechanical
-[2] Create Commons Attribution License: http://creativecommons.org/licenses/by/2.0/
+[ms]: https://www.inventables.com/categories/innovative-materials/components/mechanical
+[cc]: http://creativecommons.org/licenses/by/2.0/
