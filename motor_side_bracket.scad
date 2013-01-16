@@ -91,8 +91,8 @@ module makerslide_bracket() {
 
 
 difference() {
- motor_mount();
-//  makerslide_bracket();
+ // motor_mount();
+ makerslide_bracket();
 
   translate([0, motor_width+bracket_w/2])
     connecting_holes();
