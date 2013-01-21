@@ -9,7 +9,7 @@ motor_mount_ring_r = 11.0 + fudge;
 motor_mount_hole_r = 1.75 + fudge;
 motor_mount_height = 7.5;
 motor_mount_opening = 20;
-motor_mount_opening_offset = 6.0+fudge;
+motor_mount_opening_offset = 10.0+fudge;
 motor_dist_between_mount_holes = 31;
 
 leg_bolt_r = 3.0+fudge;
@@ -32,9 +32,11 @@ module motor_mount() {
   difference() {
     union() {
       cornerless_cube(motor_width, motor_width, motor_mount_height, 10.0);
+      translate([motor_width/4*3, motor_width/4*3])
+        cube([motor_width/4, motor_width/4, motor_mount_height]);
   
       translate([motor_width/2, motor_width/2]) {
-        rotate([0, 0, 45]) {
+        rotate([0, 0, 0]) {
           translate([-motor_mount_opening/2+motor_mount_opening_offset-motor_mount_height, motor_mount_ring_r, leg_height])
             rotate([0, 90, 0])
               cornerless_cube(leg_height, leg_extra, motor_mount_height, 3.0);
@@ -58,9 +60,9 @@ module motor_mount() {
         // Center
         cylinder(r=motor_mount_ring_r, h=long, $fn = 64);
         // U Legs
-        rotate([0, 0, 45])
+        rotate([0, 0, 0])
           translate([-motor_mount_opening/2+motor_mount_opening_offset, 0, -shim]) {
-            cube([motor_mount_opening, long, long]);
+            // cube([motor_mount_opening, long, long]);
             translate([-motor_mount_height, motor_mount_ring_r, leg_height])
               rotate([0, 90, 0]) {
                 translate([leg_height/2, leg_extra-leg_bolt_r-5, -long/2]) {
