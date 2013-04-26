@@ -36,6 +36,14 @@ module motor_mount() {
         cube([motor_width/4, motor_width/4, motor_mount_height]);
   
       translate([motor_width/2, motor_width/2]) {
+        translate([-motor_width/4, -motor_width/2, motor_mount_height]) {
+          difference() {
+            cube([motor_width/2, motor_mount_height, motor_mount_height]);
+            for (i=[-1,1])
+              translate([motor_width/4+i*(motor_width/8-1)-(3.5/2), 0])
+                cube([3.5, motor_mount_height, motor_mount_height]);
+          }
+        }
         rotate([0, 0, 0]) {
           translate([-motor_mount_opening/2+motor_mount_opening_offset-motor_mount_height, motor_mount_ring_r, leg_height])
             rotate([0, 90, 0])
@@ -63,13 +71,18 @@ module motor_mount() {
         rotate([0, 0, 0])
           translate([-motor_mount_opening/2+motor_mount_opening_offset, 0, -shim]) {
             // cube([motor_mount_opening, long, long]);
-            translate([-motor_mount_height, motor_mount_ring_r, leg_height])
+            translate([-motor_mount_height, motor_mount_ring_r, motor_mount_height + 2])
+              cube([leg_height, leg_extra, motor_mount_height]);
+            translate([-motor_mount_height, motor_mount_ring_r, leg_height]) {
               rotate([0, 90, 0]) {
                 translate([leg_height/2, leg_extra-leg_bolt_r-5, -long/2]) {
                   cylinder(r=leg_bolt_r, h=long, $fn=48);
                   // bolt head seat for top bolt hole
-                  translate([0, 0, long/2 - motor_mount_height + leg_bolt_head_seat])
+                  translate([0, 0, long/2 - motor_mount_height + leg_bolt_head_seat]) {
                     cylinder(r=leg_bolt_head_r, h=motor_mount_height, $fn=48);
+                    translate([-leg_bolt_r - leg_bolt_r, -leg_bolt_r, 0])
+                      cube([leg_bolt_r*2, leg_bolt_r*2, 25]);
+                  }
                   // bolt head seat for bottom bolt hole
                   translate([0, 0, long/2 + motor_mount_opening + motor_mount_height*2 - leg_bolt_head_seat])
                     cylinder(r=leg_bolt_head_r, h=motor_mount_height, $fn=48);
@@ -81,6 +94,7 @@ module motor_mount() {
                     cylinder(r=leg_bolt_head_r, h=motor_mount_height, $fn=48);
                 }
               }
+            }
           }
     }
   }  
