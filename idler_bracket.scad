@@ -9,7 +9,7 @@ tensioner_nut_r = 3.15 + fudge;
 tensioner_nut_th = 2.4;
 
 bolt_r = 2.9+fudge;
-bolt_head_r = 4.5+fudge;
+bolt_head_r = 4.9+fudge;
 bolt_head_seat = 2.5;
 
 bearing_r = 12.0+fudge;
@@ -124,9 +124,9 @@ module makerslide_bracket() {
   }
 }
 
-// bearing_bracket();
+bearing_bracket();
 
-makerslide_bracket();
-translate([0, 65, 0])
-  scale([1, -1, 1])
-    makerslide_bracket();
+// makerslide_bracket();
+// translate([0, 65, 0])
+//   scale([1, -1, 1])
+//     makerslide_bracket();

@@ -7,7 +7,7 @@ fudge = 0.3;
 motor_width = 42.25;
 motor_mount_ring_r = 11.0 + fudge;
 motor_mount_hole_r = 1.75 + fudge;
-motor_mount_height = 7.5;
+motor_mount_height = 9.5;
 motor_mount_opening = 20;
 motor_mount_opening_offset = 10.0+fudge;
 motor_dist_between_mount_holes = 31;
@@ -28,76 +28,93 @@ module motor_mount_holes() {
       cylinder(r=motor_mount_hole_r, h=long, center=true, $fn = 48);
 }
 
-module motor_mount() {
-  difference() {
-    union() {
-      cornerless_cube(motor_width, motor_width, motor_mount_height, 10.0);
-      translate([motor_width/4*3, motor_width/4*3])
-        cube([motor_width/4, motor_width/4, motor_mount_height]);
-  
-      translate([motor_width/2, motor_width/2]) {
-        translate([-motor_width/4, -motor_width/2, motor_mount_height]) {
-          difference() {
-            cube([motor_width/2, motor_mount_height, motor_mount_height]);
-            for (i=[-1,1])
-              translate([motor_width/4+i*(motor_width/8-1)-(3.5/2), 0])
-                cube([3.5, motor_mount_height, motor_mount_height]);
-          }
-        }
-        rotate([0, 0, 0]) {
-          translate([-motor_mount_opening/2+motor_mount_opening_offset-motor_mount_height, motor_mount_ring_r, leg_height])
-            rotate([0, 90, 0])
-              cornerless_cube(leg_height, leg_extra, motor_mount_height, 3.0);
+module bolt_neg(shaft_height, head_height) {
+  // shaft of bolt
+  translate([0, 0, -shaft_height])
+    cylinder(r=leg_bolt_r, h=shaft_height+shim, $fn=48);
+  // head of bolt
+  cylinder(r=leg_bolt_head_r, h=head_height, $fn=48);
+}
 
-          translate([motor_mount_opening/2+motor_mount_opening_offset, 4, leg_height])
-            rotate([0, 90, 0])
-              cornerless_cube(leg_height, leg_extra_bottom, motor_mount_height, 3.0);
-        }
-      }
-            // %cube([leg_height, leg_extra, motor_mount_height]);
-      // rotate([0, 0, 90])
-      //   translate([-motor_width/2, -motor_width/4])
-      //     %cornerless_cube(motor_width, motor_width/2, motor_mount_height, 8.0);
+module protrusion(w, h, d, shave=2) {
+  // cube([w, h, d]);
+  hull() {
+    translate([0, 0, 0]) {
+      cube([w-shave, h, shim]);
+      translate([0, shave])
+        cube([w, h-shave*2, shim]);
     }
-    
-    translate([motor_width/2, motor_width/2]) {
-      motor_mount_holes();
 
-      // U-shaped opening in center of motor mount
-      translate([0, 0, -shim])
-        // Center
-        cylinder(r=motor_mount_ring_r, h=long, $fn = 64);
-        // U Legs
-        rotate([0, 0, 0])
-          translate([-motor_mount_opening/2+motor_mount_opening_offset, 0, -shim]) {
-            // cube([motor_mount_opening, long, long]);
-            translate([-motor_mount_height, motor_mount_ring_r, motor_mount_height + 2])
-              cube([leg_height, leg_extra, motor_mount_height]);
-            translate([-motor_mount_height, motor_mount_ring_r, leg_height]) {
-              rotate([0, 90, 0]) {
-                translate([leg_height/2, leg_extra-leg_bolt_r-5, -long/2]) {
-                  cylinder(r=leg_bolt_r, h=long, $fn=48);
-                  // bolt head seat for top bolt hole
-                  translate([0, 0, long/2 - motor_mount_height + leg_bolt_head_seat]) {
-                    cylinder(r=leg_bolt_head_r, h=motor_mount_height, $fn=48);
-                    translate([-leg_bolt_r - leg_bolt_r, -leg_bolt_r, 0])
-                      cube([leg_bolt_r*2, leg_bolt_r*2, 25]);
-                  }
-                  // bolt head seat for bottom bolt hole
-                  translate([0, 0, long/2 + motor_mount_opening + motor_mount_height*2 - leg_bolt_head_seat])
-                    cylinder(r=leg_bolt_head_r, h=motor_mount_height, $fn=48);
-                }
-                translate([leg_height/2, leg_extra-leg_bolt_r-5 + leg_bottom_2nd_hole, -long/2]) {
-                  cylinder(r=leg_bolt_r, h=long, $fn=48);
-                  // bolt head seat for 2nd bottom bolt hole
-                  translate([0, 0, long/2 + motor_mount_opening + motor_mount_height*2 - leg_bolt_head_seat])
-                    cylinder(r=leg_bolt_head_r, h=motor_mount_height, $fn=48);
-                }
-              }
-            }
-          }
+    translate([0, 0, d]) {
+      cube([w-shave, h, shim]);
+      translate([0, shave])
+        cube([w, h-shave*2, shim]);
+    }
+  }
+}
+
+module motor_mount_pos() {
+  union() {
+    cornerless_cube(motor_width, motor_width, motor_mount_height, 10.0);
+    translate([motor_width/4*3, motor_width/4*3])
+      cube([motor_width/4, motor_width/4, motor_mount_height]);
+
+    translate([motor_width/2, motor_width/2]) {
+
+      // Protrusion that slides into makerslide (top)
+      translate([2, motor_width/2, motor_mount_height])
+        rotate([270, 0, 0])
+          protrusion(3.9, motor_mount_height, 20);
+
+      // Protrusion that slides into makerslide (bottom)
+      translate([motor_width/2 - 4 - 3 + 4, motor_width/2])
+        rotate([270, 180, 0])
+          protrusion(3.9, motor_mount_height, 20);
+
+      // translate([motor_mount_opening/2+motor_mount_opening_offset, 4, leg_height])
+      //   rotate([0, 90, 0])
+      //     cornerless_cube(leg_height, leg_extra_bottom, motor_mount_height, 3.0);
+    }
+  }
+}
+
+module motor_mount_neg() {
+  translate([motor_width/2, motor_width/2]) {
+    motor_mount_holes();
+
+    translate([0, 0, -shim]) {
+      // Hole in center for motor's protruding cylinder
+      cylinder(r=motor_mount_ring_r, h=long, $fn = 64);
+
+      // Remove back portion so that screwdriver can access MXL pulley
+      translate([-motor_mount_ring_r, -motor_width/2-shim])
+        cube([motor_mount_ring_r*2, motor_mount_ring_r*2, motor_mount_height+shim*2]);
+
+      // U Legs
+      // translate([-motor_mount_opening/2+motor_mount_opening_offset, 0]) {
+      //   translate([-motor_mount_height, motor_mount_ring_r, leg_height]) {
+      //     rotate([0, 90, 0]) {
+      //       translate([0, 0, motor_mount_opening + motor_mount_height*2 - leg_bolt_head_seat]) {
+      //         translate([leg_height/2, leg_extra-leg_bolt_r-5])
+      //           bolt_neg(motor_mount_height, motor_mount_height);
+      //         translate([leg_height/2, leg_extra-leg_bolt_r-5 + leg_bottom_2nd_hole])
+      //           bolt_neg(motor_mount_height, motor_mount_height);
+      //       }
+      //     }
+      //   }
+      // }
+    }
+  }
+}
+module motor_mount() {
+  translate([-motor_width/2, -motor_width/2]) {
+    difference() {
+      motor_mount_pos();
+      motor_mount_neg();
     }
   }  
 }
 
 motor_mount();
+
+// protrusion(4, motor_mount_height, 20);
